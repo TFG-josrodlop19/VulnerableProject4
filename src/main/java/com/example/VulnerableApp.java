@@ -16,11 +16,7 @@ public class VulnerableApp {
 
         try {
             SAXReader reader = new SAXReader();
-            
-            // --- ¡LA LLAMADA VULNERABLE A LA DEPENDENCIA! ---
-            // En esta versión de dom4j, el SAXReader por defecto no tiene protecciones
-            // contra la expansión de entidades. Al llamar a .read() sobre un XML
-            // malicioso, se disparará el consumo de recursos.
+           
             reader.read(fileName);
 
             System.out.println("[+] El fichero XML fue parseado con éxito (esto no debería ocurrir con el payload).");
