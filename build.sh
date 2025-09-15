@@ -6,7 +6,7 @@ mvn -q clean dependency:copy-dependencies -DoutputDirectory=target/dependency-ja
 
 # --- Paso 2: Configuración del classpath ---
 echo "Configurando classpath..."
-BUILD_CLASSPATH="$JAZZER_API_PATH:$(find "target/dependency-jars" -name "*.jar" | paste -sd: -)"
+BUILD_CLASSPATH="$JAZZER_AGENT_PATH:$(find "target/dependency-jars" -name "*.jar" | paste -sd: -)"
 
 # --- Paso 3: Compilación de clases principales ---
 echo "Compilando clases principales..."
