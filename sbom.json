@@ -1,0 +1,68 @@
+{
+  "components": [
+    {
+      "bom-ref": "junit-L1",
+      "description": "maven dependency: junit==3.8.1",
+      "externalReferences": [
+        {
+          "comment": "Maven Central Repository",
+          "type": "distribution",
+          "url": "https://repo1.maven.org/maven2/junit/junit/"
+        }
+      ],
+      "name": "junit:junit",
+      "purl": "pkg:maven/junit/junit@3.8.1",
+      "scope": "optional",
+      "type": "library",
+      "version": "3.8.1"
+    },
+    {
+      "bom-ref": "dom4j-L2",
+      "description": "maven dependency: dom4j==2.1.1",
+      "externalReferences": [
+        {
+          "comment": "Maven Central Repository",
+          "type": "distribution",
+          "url": "https://repo1.maven.org/maven2/org/dom4j/dom4j/"
+        }
+      ],
+      "name": "org.dom4j:dom4j",
+      "purl": "pkg:maven/org.dom4j/dom4j@2.1.1",
+      "type": "library",
+      "version": "2.1.1"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "junit-L1"
+    },
+    {
+      "ref": "dom4j-L2"
+    }
+  ],
+  "metadata": {
+    "timestamp": "2025-09-08T00:00:00.000Z",
+    "tools": [
+      {
+        "externalReferences": [
+          {
+            "type": "build-system",
+            "url": "https://github.com/CycloneDX/cyclonedx-maven-plugin"
+          },
+          {
+            "type": "distribution",
+            "url": "https://mvnrepository.com/artifact/org.cyclonedx/cyclonedx-maven-plugin"
+          }
+        ],
+        "name": "cyclonedx-maven-plugin",
+        "vendor": "CycloneDX",
+        "version": "2.7.9"
+      }
+    ]
+  },
+  "serialNumber": "urn:uuid:b3bedeec-2773-456f-b5ab-47519f43a32f",
+  "version": 1,
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5"
+}
