@@ -6,13 +6,7 @@ import org.dom4j.io.SAXReader;
 public class VulnerableApp {
 
     public static void main(String[] args) {
-        if (args.length != 1) {
-            System.err.println("Uso: java -jar <jar_file> <fichero.xml>");
-            return;
-        }
-
-        String fileName = args[0];
-        System.out.println("[+] Parseando el fichero XML: " + fileName);
+        String fileName = "payload.xml";
 
         try {
             SAXReader reader = new SAXReader();
