@@ -21,7 +21,7 @@ find src/test/java/ -name "*Fuzzer.java" | while read -r fuzzer_file; do
     echo "Procesando: $fuzzer_name"
     
     # Intentar compilar el fuzzer
-    if javac -encoding UTF-8 -cp "$BUILD_CLASSPATH:$OUT" "$fuzzer_file" -d $OUT 2>/dev/null; then
+    if javac -encoding UTF-8 -cp "$BUILD_CLASSPATH:$OUT" "$fuzzer_file" -d $OUT; then
         echo "✅ $fuzzer_name: COMPILADO"
     else
         echo "❌ $fuzzer_name: FALLÓ AL COMPILAR"
