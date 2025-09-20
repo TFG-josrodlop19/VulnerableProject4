@@ -5,8 +5,3 @@ sanitizers:
   - address
   - undefined
   - dataflow
-
-jvm_args:
-  # -DentityExpansionLimit=0 le dice al parser XML del JDK que no tenga límite
-  # para la expansión de entidades, permitiendo que el ataque "Billion Laughs" proceda.
-  - "-DentityExpansionLimit=0"
