@@ -8,7 +8,7 @@ public class VulnerableApp {
         Yaml yaml = new Yaml();
         // This start of payload is designed to guide the fuzzer towards the recursive
         // structure
-        String yamlStr = "&a [ \"lol\"," + yamlContent;
+        String yamlStr = "&a [ \"lol\"," + yamlContent + "]";
         // This is the vulnerable part that can lead to a denial of service
         Object data = yaml.load(yamlStr);
         // If we reach this point, the YAML was processed without exploiting the
