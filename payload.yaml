@@ -1,0 +1,4 @@
+# Define un ancla llamada 'a' que es una lista
+# El primer elemento de la lista es el string "lol"
+# El segundo elemento es un alias a la propia ancla 'a'
+&a [ "lol", *a ]
