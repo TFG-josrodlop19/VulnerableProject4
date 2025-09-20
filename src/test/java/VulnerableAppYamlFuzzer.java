@@ -19,8 +19,8 @@ or automatic build until the user edits this fuzzer.
 import com.code_intelligence.jazzer.api.FuzzedDataProvider;
 
 /**
- * Generic fuzzer for class VulnerableApp, artifact Yaml in line 13. Objetivo: método Yaml en la
- * línea 13.
+ * Generic fuzzer for class VulnerableApp, artifact yaml in line 21. Objetivo: método yaml en la
+ * línea 21.
  */
 public class VulnerableAppYamlFuzzer {
 

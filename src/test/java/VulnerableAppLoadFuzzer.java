@@ -19,8 +19,8 @@ or automatic build until the user edits this fuzzer.
 import com.code_intelligence.jazzer.api.FuzzedDataProvider;
 
 /**
- * Generic fuzzer for class VulnerableApp, artifact load in line 23. Objetivo: método load en la
- * línea 23.
+ * Generic fuzzer for class VulnerableApp, artifact load in line 15. Objetivo: método load en la
+ * línea 15.
  */
 public class VulnerableAppLoadFuzzer {
 
