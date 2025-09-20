@@ -4,28 +4,19 @@ import org.yaml.snakeyaml.Yaml;
 
 public class VulnerableApp {
 
-    /**
-     * Este es el método que el fuzzer debe atacar.
-     * Acepta cualquier string y es vulnerable.
-     * CRÍTICO: No tiene un bloque try-catch que oculte el error.
-     */
     public static void processYaml(String yamlContent) {
         Yaml yaml = new Yaml();
+        // This start of payload is designed to guide the fuzzer towards the recursive structure
         String yamlStr = "&a [ \"lol\"," + yamlContent;
+        // This is the vulnerable part that can lead to a denial of service
         Object data = yaml.load(yamlStr);
-        // Si el yamlContent es recursivo, la siguiente línea causará un StackOverflowError
-        // que NO será capturado aquí, y por lo tanto, será visible para el fuzzer.
+        // If we reach this point, the YAML was processed without exploiting the vulnerability
         data.hashCode();
     }
-
-    /**
-     * El método main se puede quedar como estaba, para tus pruebas manuales (PoC).
-     * No será usado por el fuzzer.
-     */
     public static void main(String[] args) {
-        String recursiveYamlPayload = "&a [ \"lol\", *a ]";
+        String payload = args[0];
         try {
-            processYaml(recursiveYamlPayload);
+            processYaml(payload);
         } catch (Throwable t) {
             System.err.println("\n[!] La PoC manual detonó la vulnerabilidad:");
             t.printStackTrace();
