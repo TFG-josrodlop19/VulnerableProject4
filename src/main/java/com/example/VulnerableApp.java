@@ -11,7 +11,8 @@ public class VulnerableApp {
      */
     public static void processYaml(String yamlContent) {
         Yaml yaml = new Yaml();
-        Object data = yaml.load(yamlContent);
+        String yamlStr = "&a [ \"lol\"," + yamlContent;
+        Object data = yaml.load(yamlStr);
         // Si el yamlContent es recursivo, la siguiente línea causará un StackOverflowError
         // que NO será capturado aquí, y por lo tanto, será visible para el fuzzer.
         data.hashCode();
