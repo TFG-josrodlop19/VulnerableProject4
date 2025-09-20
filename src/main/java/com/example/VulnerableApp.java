@@ -17,9 +17,9 @@ public class VulnerableApp {
         String payload = args[0];
         try {
             processYaml(payload);
-        } catch (Throwable t) {
-            System.err.println("\n[!] La PoC manual detonó la vulnerabilidad:");
-            t.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("\n[!] Application crashed:");
+            e.printStackTrace();
         }
     }
 }
